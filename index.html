@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b10">
+  <title>Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon">N</div>
+        <span>Notes</span>
+      </div>
+      <button class="new-note" id="newNote">＋ New note</button>
+      <div class="nav">
+        <button class="nav-item active" data-filter="all">📝 <span>All Notes</span><b id="allCount">0</b></button>
+        <button class="nav-item" data-filter="favorites">⭐ <span>Favorites</span><b id="favCount">0</b></button>
+        <button class="nav-item" data-filter="archived">📦 <span>Archived</span><b id="archiveCount">0</b></button>
+      </div>
+      <div class="storage" id="storageStatus">Saved on this device</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn" aria-label="Menu">☰</button>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="search" type="search" placeholder="Search notes..." autocomplete="off">
+        </div>
+        <button class="icon-btn" id="darkToggle" title="Toggle theme">☀</button>
+      </header>
+
+      <section class="content">
+        <div class="page-heading">
+          <div>
+            <h1 id="pageTitle">All Notes</h1>
+            <p id="noteCount">0 notes</p>
+          </div>
+          <button class="primary" id="newNoteTop">＋ New note</button>
+        </div>
+
+        <div id="notesGrid" class="notes-grid"></div>
+        <div id="empty" class="empty">
+          <div class="empty-icon">✎</div>
+          <h2 id="emptyTitle">No notes yet</h2>
+          <p id="emptyText">Create your first note and everything will be saved automatically.</p>
+          <button class="primary" id="emptyButton">Create a note</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="editorModal">
+    <div class="editor-card">
+      <div class="editor-top">
+        <button class="icon-btn" id="closeEditor">✕</button>
+        <div class="editor-actions">
+          <button class="icon-btn" id="favoriteBtn" title="Favorite">☆</button>
+          <button class="icon-btn" id="archiveBtn" title="Archive">▣</button>
+          <button class="danger-btn" id="deleteBtn">Delete</button>
+        </div>
+      </div>
+
+      <input id="titleInput" class="title-input" placeholder="Note title" maxlength="200">
+      <textarea id="bodyInput" class="body-input" placeholder="Start writing..."></textarea>
+
+      <div class="attachments" id="attachments"></div>
+
+      <div class="recording-panel hidden" id="recordingPanel">
+        <div class="recording-dot"></div>
+        <span id="recordingTime">00:00</span>
+        <button class="stop-record" id="stopRecording">Stop recording</button>
+      </div>
+
+      <div class="toolbar">
+        <button id="boldBtn" title="Bold"><b>B</b></button>
+        <button id="italicBtn" title="Italic"><i>I</i></button>
+        <button id="checkBtn" title="Checklist">☑</button>
+        <button id="colorBtn" title="Highlight">🖍</button>
+        <label class="tool-upload" title="Attach image/file">📎<input type="file" id="fileInput" multiple hidden></label>
+        <button id="voiceBtn" title="Record voice note">🎙</button>
+        <button id="dateBtn" title="Insert date">📅</button>
+        <span class="spacer"></span>
+        <span class="save-state" id="saveState">Saved</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
